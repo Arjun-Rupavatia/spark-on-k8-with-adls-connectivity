@@ -27,8 +27,8 @@
 </property>
 
 <property>
-  <name>fs.azure.account.key.cieanalyticsstoragedev.dfs.core.windows.net</name>
-  <value>fI59Mavwgl5+sms7p25JI7F1AeO1ZNifUiBee6g/ek0LVwqCUYqcdnMlw01IEQOO2UIHWVQWIsTflbfP0h8exw==</value>
+  <name>fs.azure.account.key.<accountkey>.dfs.core.windows.net</name>
+  <value><key></value>
 </property>
 
 </configuration>
