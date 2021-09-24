@@ -32,6 +32,27 @@ Some steps to make spark and hadoop up and running:
 	add SPARK_HOME/bin and SPARK_HOME/sbin to PATH
 	export SPARK_DIST_CLASSPATH=<output of hadoop classpath>
 	now "spark-submit" should run on terminal
+	
+
+
+Exception in thread "main" java.lang.IllegalArgumentException: basedir must be absolute: ?/.ivy2/local while submitting spark applications:
+	This error can be solve by specifying correct USER in dockerfile and setting a ENTRYPOINT
+	for me this error was resolved by adding following in dockerfile:
+		set -ex && \
+		sed -i 's/http:\/\/deb.\(.*\)/https:\/\/deb.\1/g' /etc/apt/sources.list && \
+		apt-get update && \
+		ln -s /lib /lib64 && \
+		apt install -y bash tini libc6 libpam-modules krb5-user libnss3 && \
+		rm /bin/sh && \
+		ln -sv /bin/bash /bin/sh && \
+		echo "auth required pam_wheel.so use_uid" >> /etc/pam.d/su && \
+		chgrp root /etc/passwd && chmod ug+rw /etc/passwd && \
+		rm -rf /var/cache/apt/* && \
+		....
+		WORKDIR /opt/spark/work-dir
+		RUN chmod g+w /opt/spark/work-dir
+		ENTRYPOINT [ "/opt/entrypoint.sh" ]
+		USER ${spark_uid}
 
   
   
