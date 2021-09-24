@@ -27,7 +27,7 @@
 </property>
 
 <property>
-  <name>fs.azure.account.key.<accountkey>.dfs.core.windows.net</name>
+  <name>fs.azure.account.key.<account>.dfs.core.windows.net</name>
   <value><key></value>
 </property>
 
