@@ -36,8 +36,10 @@ Some steps to make spark and hadoop up and running:
 
 
 Exception in thread "main" java.lang.IllegalArgumentException: basedir must be absolute: ?/.ivy2/local while submitting spark applications:
+	
 	This error can be solve by specifying correct USER in dockerfile and setting a ENTRYPOINT
 	for me this error was resolved by adding following in dockerfile:
+	
 		set -ex && \
 		sed -i 's/http:\/\/deb.\(.*\)/https:\/\/deb.\1/g' /etc/apt/sources.list && \
 		apt-get update && \
